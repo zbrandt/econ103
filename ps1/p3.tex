@@ -17,19 +17,19 @@
         \begin{itemize}
             \item[$\Rightarrow$] \textbf{Forward direction:} Assume that 
                 $\frac{\partial^2}{\partial x \partial y} f \geq 0$ everywhere.
-                By the Fundamental Theoreom of Calculus, 
+                By the Fundamental Theorem of Calculus, 
 
                 \[
-                    f'(x', y) - f'(x, y) = \int_{x}^{x'} \frac{\partial^2 f}{\partial x \partial y}(t, y) \, dt
+                    \frac{\partial f}{\partial y}(x', y) - \frac{\partial f}{\partial y}(x, y) = \int_{x}^{x'} \frac{\partial^2 f}{\partial x \partial y}(t, y) \, dt
                 \]
 
                 Since $\frac{\partial^2 f}{\partial x \partial y} \geq 0$, 
-                $f'(x', y) - f'(x, y) \geq 0$, i.e., $f(x', y) - f(x, y)$ is 
+                $\frac{\partial f}{\partial y}(x', y) - \frac{\partial f}{\partial y}(x, y) \geq 0$, i.e., $f(x', y) - f(x, y)$ is 
                 non-decreasing in $y$. And since $y' > y$, this forward
                 direction is proven to hold.  
 
                 \[
-                    f(x', y') - f(x, y') \geq f(x', y) - f(x, y))
+                    f(x', y') - f(x, y') \geq f(x', y) - f(x, y)
                 \]
             
             \item[$\Leftarrow$] \textbf{Reverse direction:} Now assume that the 
