@@ -1,13 +1,64 @@
 \begin{homeworkProblem}
-    Let \(f : \mathbb{R}^2 \to \mathbb{R}\) be a twice-differentiable function. Show that \(\frac{\partial^2}{\partial x \partial y} f \geq 0\) if and
-    only if for every \(x, x', y, y' \in \mathbb{R}\):
+    Let \(f : \mathbb{R}^2 \to \mathbb{R}\) be a twice-differentiable function. 
+    Show that \(\frac{\partial^2}{\partial x \partial y} f \geq 0\) if and only 
+    if for every \(x, x', y, y' \in \mathbb{R}\):
 
     \[
-        x' > x \text{ and } y' > y \Rightarrow f(x', y') - f(x, y') \geq f(x', y) - f(x, y).
+        x' > x \text{ and } y' > y \Rightarrow f(x', y') - f(x, y') \geq 
+        f(x', y) - f(x, y).
     \]
 
     \solution
 
-    % Your solution here
+    \begin{proof}
+        To prove the if and only if condition, both directions need to be 
+        proven. 
+
+        \begin{itemize}
+            \item[$\Rightarrow$] \textbf{Forward direction:} Assume that 
+                $\frac{\partial^2}{\partial x \partial y} f \geq 0$ everywhere.
+                By the Fundamental Theoreom of Calculus, 
+
+                \[
+                    f'(x', y) - f'(x, y) = \int_{x}^{x'} \frac{\partial^2 f}{\partial x \partial y}(t, y) \, dt
+                \]
+
+                Since $\frac{\partial^2 f}{\partial x \partial y} \geq 0$, 
+                $f'(x', y) - f'(x, y) \geq 0$, i.e., $f(x', y) - f(x, y)$ is 
+                non-decreasing in $y$. And since $y' > y$, this forward
+                direction is proven to hold.  
+
+                \[
+                    f(x', y') - f(x, y') \geq f(x', y) - f(x, y))
+                \]
+            
+            \item[$\Leftarrow$] \textbf{Reverse direction:} Now assume that the 
+                inequality holds for all $x' > x$ and $y' > y$. Define $x'$ as 
+                $x_0 + h$ and $y'$ as $y_0 + k$ where $h, k > 0$. The 
+                inequality can be rearranged to find partial derivatives in
+                terms of $y$ as $k \to 0^+$. 
+
+                
+                \[
+                    \begin{split}
+                        f(x_0 + h, y_0 + k) - f(x_0, y_0 + k) &\geq f(x_0 + h, y_0) - f(x_0, y_0) \\
+                        \frac{f(x_0 + h, y_0 + k) - f(x_0 + h, y_0)}{k} &\geq \frac{f(x_0, y_0 + k) - f(x_0, y_0)}{k} \\
+                        \frac{\partial f}{\partial y}(x_0 + h, y_0) &\geq \frac{\partial f}{\partial y}(x_0, y_0)
+                    \end{split}
+                \]
+                
+                This shows that $\frac{\partial f}{\partial y}$ is 
+                non-decreasing in $x$ for fixed $y$. Therefore:
+
+                \[
+                    \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right) = 
+                    \frac{\partial^2 f}{\partial y \partial x} \geq 0
+                \]
+
+        \end{itemize}
+
+        So both directions have been shown to hold and the claim has been
+        proven. 
+    \end{proof}
 
 \end{homeworkProblem}
