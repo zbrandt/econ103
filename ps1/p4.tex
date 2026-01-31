@@ -1,13 +1,47 @@
 \begin{homeworkProblem}
-    A pair \(G = (V, E)\) is a \textit{directed graph} if \(V\) is a set and \(E \subset V \times V\). The graph
-    \(G\) has a cycle if there exists an integer \(n \geq 1\) and elements \(v_1, \ldots, v_n \in V\) such
-    that \((v_1, v_2), (v_2, v_3), \ldots, (v_{n-1}, v_n), (v_n, v_1) \in E\). Show that if \(V\) is a non-empty
-    finite set and for all \(v \in V\) there is \(v' \in V\) such that \((v, v') \in E\), then \(G\) has a
-    cycle.
+    A pair \(G = (V, E)\) is a \textit{directed graph} if \(V\) is a set and 
+    \(E \subset V \times V\). The graph \(G\) has a cycle if there exists an 
+    integer \(n \geq 1\) and elements \(v_1, \ldots, v_n \in V\) such that 
+    \((v_1, v_2), (v_2, v_3), \ldots, (v_{n-1}, v_n), (v_n, v_1) \in E\). Show 
+    that if \(V\) is a non-empty finite set and for all \(v \in V\) there is 
+    \(v' \in V\) such that \((v, v') \in E\), then \(G\) has a cycle.
     \\
 
     \solution
 
-    % Your solution here
+    \begin{proof}
+        Since $V$ is non-empty and finite, let $|V| = k$ for some positive 
+        integer $k$. By the given condition, for every vertex there exists an 
+        outgoing edge, so there exists a path like the following
+
+        \[
+            v_0 \to v_1 \to v_2 \to v_3 \to \cdots
+        \]
+
+        where each arrow represents an edge $(v_i, v_{i+1}) \in E$. Since $V$ 
+        is finite with $k$ vertices, any path of length greater than $k$ must 
+        visit at least one vertex more than once by the Pigeonhole Principle.
+        Consider the path of length $k+1$: $v_0, v_1, v_2, \ldots, v_k, 
+        v_{k+1}$. This path contains $k+2$ vertices. Since there are only $k$ 
+        distinct vertices in $V$, at least two vertices in this sequence must 
+        be the same. Let $v_i$ be the first vertex that appears again in the 
+        sequence, and let $v_j$ be its first reappearance, where 
+        $0 \leq i < j \leq k+1$. 
+
+        \[
+            v_i \to v_{i+1} \to v_{i+2} \to \cdots \to v_{j-1} \to v_j = v_i
+        \]
+
+        This forms a cycle because:
+        \begin{itemize}
+            \item $(v_i, v_{i+1}) \in E$
+            \item $(v_{i+1}, v_{i+2}) \in E$
+            \item $\vdots$
+            \item $(v_{j-1}, v_j) \in E$
+            \item Since $v_j = v_i$, the edge $(v_{j-1}, v_j)$ is actually $(v_{j-1}, v_i)$, completing the cycle back to $v_i$
+        \end{itemize}
+
+        Therefore, $G$ contains a cycle with vertices $v_i, v_{i+1}, \ldots, v_{j-1}$ and edges $(v_i, v_{i+1}), (v_{i+1}, v_{i+2}), \ldots, (v_{j-1}, v_i)$, where the cycle length is $j - i \geq 1$.
+    \end{proof}
 
 \end{homeworkProblem}
