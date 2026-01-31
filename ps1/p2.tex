@@ -1,11 +1,29 @@
 \begin{homeworkProblem}
-    Let \(X\) be a nonempty set, and let \(2^X\) denote the set of all subsets of \(X\). Show
-    that there is no onto (aka surjective) function \(f : X \mapsto 2^X\). (The function \(f\) is
-    surjective if for every set \(A \in 2^X\) there is an \(x \in X\) such that \(f(x) = A\).)
+    Let \(X\) be a nonempty set, and let \(2^X\) denote the set of all subsets 
+    of \(X\). Show that there is no onto (aka surjective) function \(f : X 
+    \mapsto 2^X\). (The function \(f\) is surjective if for every set \(A \in 
+    2^X\) there is an \(x \in X\) such that \(f(x) = A\).)
     \\
 
     \solution
 
-    % Your solution here
+    \begin{proof}
+        Assume there exists an onto function that maps elements in $X$ to those
+        in $2^X$. There then must be a set $S$ in $2^X$ that contains those 
+        elements in $X$ that are not in their corresponding subsets in $2^X$.
+
+        \[
+            S = \{ x \in X : x \not \in f(x) \}
+        \]
+
+        Continuing from the assumption, there then must be some element $s$ in
+        $X$ where $f(s) = S$. $s$ must either be in $S$ or not in $S$. If $s$
+        is in $S$, then that violates the restriction that $s \not \in f(s)$, 
+        and therefore $s$ cannot be in $S$ since $f(s) = S$. If $s$ is not in
+        $S$, that then means that $s \not \in f(s)$, which is what defines
+        elements in $S$. So there is a contradiction leading from the original
+        assumption, and therefore there does not exist an onto function $f : X 
+        \mapsto 2^X$.  
+    \end{proof}
 
 \end{homeworkProblem}
