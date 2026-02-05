@@ -1,0 +1,37 @@
+\begin{homeworkProblem}
+    This is a question about grading and course design. There are $N$ students in a course. Assume for simplicity that an instructor can give each student one of two grades, $A$ or $B$.
+    
+    Say that the class is \emph{curved} if there is a number $x \in \{1, 2, \ldots, N\}$ such that the instructor must give $A$'s to $x$ students, and $B$'s to the remaining $N - x$ students.
+    
+    \begin{itemize}
+        \item[(a)] Suppose the grade in the class is based on homework and exams. To be precise there is a weight $\alpha \in (0, 1)$ such the score of student $i$, denoted by $s_i$, is given by
+            \[
+                s_i = \alpha h_i + (1 - \alpha)e_i,
+            \]
+            where $h_i$ is student $i$'s homework score, and $e_i$ is their exam score. If the class is curved, the $x$ students with the highest grade get $A$'s, and the rest get $B$'s (throughout the question you can assume that there are no ties). Fixing the exam scores, suppose the instructor grades homework more leniently. This means that for some $\delta > 1$, each student's grade goes from $h_i$ to $\delta h_i$. What can you say about how the old scores compare to the new scores? What about the new grades? Which students benefit and which are hurt? Be as precise as you can, and prove your answer.
+    \end{itemize}
+    
+    Now, assume instead that each student's score in the course is determined by the amount of time they have to study for the course, $t_i$, and difficulty of the course, $d$, so $s_i = s(t_i, d)$ for some function $s : \mathbb{R}^2_+ \to \mathbb{R}_+$ which is increasing in its first argument (time) and decreasing in the second argument (difficulty).\footnote{$\mathbb{R}_+$ denotes the non-negative real numbers.}
+    
+    Students like getting $A$'s more than $B$'s, but they also like a class that is not too easy, nor too hard (if the class is to easy you don't learn anything new, and if it's too hard you don't understand anything). We can represent student $i$'s preferences over difficulty levels and grades by a utility function
+    \[
+        U_i(G, d) = u(G) - (d - d_i)^2
+    \]
+    which describes their payoff from getting grade $G \in \{A, B\}$ when the class has difficulty level $d \in \mathbb{R}_+$. The parameter $d_i$ represents the ideal difficulty level for student $i$, if they had no concern about grades (make sure you understand why this is the case).
+    
+    The instructor wants to choose the difficulty level efficiently, to maximize the sum of student utilities.
+    
+    \begin{itemize}
+        \item[(b)] If the class is curved, what is the efficient choice of $d$?
+    \end{itemize}
+    
+    In reality the instructor does not observe $(t_i, d_i)^N_{i=1}$. Instead, each student privately knows their own $t_i$ and $d_i$. In order to set the level of difficulty for the course the instructor has to run a survey to learn about $\langle d_i \rangle^N_{i=1}$. The instructor is worried about students' incentives to report truthfully.
+    
+    Assume that $t_i$ and $d_i$ are fixed for each student, and will remain the same regardless of what difficulty level is chosen.\footnote{In particular, students cannot adjust the time devoted to the course as a function of the course difficulty. This is obviously a simplification of reality. It turns out, however, that it doesn't really affect the conclusions here.} However students can report whatever $t_i, d_i$ they want to the instructor.
+    
+    \begin{itemize}
+        \item[(c)] Suppose that the class is not curved. Instead, each student whose score, $s_i$, exceeds some threshold, $a$, gets an $A$, and otherwise they get a $B$. If the instructor wants to implement the efficient choice of $d$, is it a dominant strategy for all students to report truthfully? If not, in which direction would students like to misreport? Prove your answer.
+        
+        \item[(d)] Now assume, as before, that the class is curved. Assume also that $U_i(G, d) = u(G) - |d - d_i|$. Prove that it is indeed a dominant strategy for students to report truthfully.
+    \end{itemize}
+\end{homeworkProblem}
