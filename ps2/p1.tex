@@ -1,3 +1,136 @@
 \begin{homeworkProblem}
-    Prove Nash's theorem that every finite game (meaning a finite set of players and a finite set of actions) has at least one Nash equilibrium, possibly in mixed strategies (Hint: follow the steps in the notes).
+    
+    Prove Nash's theorem that every finite game (meaning a finite set of 
+    players and a finite set of actions) has at least one Nash equilibrium, 
+    possibly in mixed strategies (Hint: follow the steps in the notes).
+
+    \solution \\
+    I'll begin the proof by first establishing some preliminaries about the
+    finite game.
+
+    \begin{itemize}
+        \item There are $N$ players. 
+        \item Given an action profile $a$, let player $i$'s payoff be 
+            $\pi_i (a)$
+        \item A mixed strategy, $\sigma_i$, for player $i$ is a lottery over 
+            $A_i$, the choices available to the player. Let $\Delta(A_i)$ be 
+            the set of such lotteries, and let $\Sigma = \Pi_{i=1}^N 
+            \Delta(A_i)$ be the set of strategy profiles. 
+        \item Given a profile of mixed strategies $\sigma_{-i}$, player $i$'s 
+            expected utility from action $a \in A_i$ is 
+
+            \[
+                U_i(a) = \mathbb{E}_{\sigma_{-i}} [\pi_i (a, a_{-i})]
+            \]
+        
+        \item Let $\textit{BR}_i (\sigma_{-i}) \subset \Delta(A_i)$ be the set 
+            of mixed strategies for $i$ that are best responses to 
+            $\sigma_{-i}$, where $\sigma_i \in \textit{BR}_i(\sigma_{-i})$ if 
+            and only if $U_i(a) \geq U_i(a')$ for all $a$ in the support of 
+            $\sigma_i$, i.e., those actions played with non-zero probability, 
+            and all $a' \in A_i$.
+    \end{itemize}
+
+    A correspondence $B : \Sigma \rightrightarrows \Sigma$ is 
+
+    \[
+        B(\sigma) = \Pi_{i = 1}^N \textit{BR}_i(\sigma_{-i})
+    \]
+
+    A Nash equilibrium is just a strategy profile $\sigma$ such that $\sigma 
+    \in B(\sigma)$. That is, I'll show that there exists a fixed point of the
+    mapping $B$, i.e., a $\sigma \in B(\sigma)$. To prove this, I'll show that 
+    the best-response correspondence $B$ satisfies the conditions of
+    Kakutani's fixed-point theorem:
+
+    \begin{enumerate}
+        \item That $\Sigma$ is compact, convex, and non-empty.
+        \item That $B(\sigma)$ is non-empty for every $\sigma \in \Sigma$.
+        \item That $B(\sigma)$ is convex-valued, i.e., for all $\sigma$,
+            $B(\sigma)$ is a convex set. 
+        \item That $B$ has a closed graph. 
+    \end{enumerate}
+
+    \textbf{Part One}
+    
+    Since $\Sigma = \Pi_{i=1}^N \Delta(A_i)$, and each $A_i$ is finite, 
+    each $\Delta(A_i)$ is the set of all probability distributions over the 
+    actions in $A_i$, i.e.,  
+    
+    \[
+        \Delta(A_i) = \{ p \in \mathbb{R}^{|A_i|} : p_a \geq 0, \sum_{a} p_a = 1 \}
+    \]
+    
+    which is closed and bounded in $\mathbb{R^|A_i|}$. The set is convex since 
+    every element is a linear combination of the choices in $A_i$ where the 
+    coefficients are between 0 and 1. The product of compact sets is compact, 
+    so $\Sigma$ is compact. The product of convex sets is convex, so $\Sigma$ 
+    is convex. The product of non-empty sets is non-empty, so $\Sigma$ is 
+    non-empty. $\square$
+
+    \textbf{Part Two}
+    
+    By definition, $\textit{BR}_i(\sigma_{-i}) = \operatorname{argmax} \{ 
+    U_i(\sigma_i, \sigma_{-i}) | \sigma_i \in \Delta(A_i) \}$. By the 
+    Weierstrass theorem, since $\Delta(A_i)$ is non-empty and compact, and the
+    utility function is continuous in $\sigma_i$, there exists an optimal 
+    solution to the optimization problem that defines the best-response 
+    function, and therefore $B(\sigma)$ is non-empty for every $\sigma \in 
+    \Sigma$ as a product of non-empty sets. $\square$ 
+
+    \textbf{Part Three}
+    
+    For $B(\sigma)$ to be convex-valued, the $\textit{BR}_i(\sigma_{-i})$ must be
+    shown to be convex. Let $\sigma_i, \sigma_i' \in \textit{BR}_i(\sigma_{-i})$ 
+    and let $\lambda \in [0,1]$. Consider the mixed strategy $\sigma_i'' = 
+    \lambda \sigma_i + (1 - \lambda) \sigma_i'$. Since expected utility is 
+    linear in the mixing probabilities, for any action $a \in A_i$,
+    
+    \[
+        U_i(\sigma_i'', \sigma_{-i}) = \lambda U_i(\sigma_i, \sigma_{-i}) + 
+        (1 - \lambda) U_i(\sigma_i', \sigma_{-i})
+    \]
+    
+    Since both $\sigma_i$ and $\sigma_i'$ are best responses, they yield the 
+    same expected utility (the maximum possible). Therefore, $\sigma_i''$ also 
+    yields this maximum expected utility, so $\sigma_i'' \in 
+    \textit{BR}_i(\sigma_{-i})$. Therefore, $\textit{BR}_i(\sigma_{-i})$ is convex 
+    for each $i$, and $B(\sigma) = \Pi_{i=1}^N \textit{BR}_i(\sigma_{-i})$ 
+    is convex as the product of convex sets. $\square$
+
+    \textbf{Part Four}
+    
+    For the graph of $B$ to be closed, $\{(\sigma, \sigma') : 
+    \sigma' \in B(\sigma)\}$, must be a closed subset of $\Sigma \times 
+    \Sigma$. Consider a sequence $\{(\sigma^n, \sigma'^n)\}$ in the graph of 
+    $B$ such that $(\sigma^n, \sigma'^n) \to (\sigma, \sigma')$. I'll show 
+    that $\sigma' \in B(\sigma)$.
+    
+    Since $\sigma'^n \in B(\sigma^n)$, for each player $i$, we have 
+    $\sigma_i'^n \in \textit{BR}_i(\sigma_{-i}^n)$. This means that for all 
+    actions $a$ in the support of $\sigma_i'^n$ and all $a' \in A_i$,
+    
+    \[
+        U_i(a, \sigma_{-i}^n) \geq U_i(a', \sigma_{-i}^n)
+    \]
+    
+    Taking limits as $n \to \infty$, and using the continuity of expected 
+    utilities in the strategy profile (which holds because payoffs are finite 
+    and the action space is finite), the inequality becomes
+    
+    \[
+        U_i(a, \sigma_{-i}) \geq U_i(a', \sigma_{-i})
+    \]
+    
+    for all actions $a$ in the support of $\sigma_i'$ and all $a' \in A_i$. 
+    This means $\sigma_i' \in \textit{BR}_i(\sigma_{-i})$ for each $i$, so 
+    $\sigma' \in B(\sigma)$. Therefore, the graph of $B$ is 
+    closed. $\square$
+    
+    \vspace{0.3cm}
+    
+    Since all four conditions of Kakutani's fixed-point theorem are satisfied, 
+    there exists a fixed point $\sigma^* \in B(\sigma^*)$, which is 
+    precisely a Nash equilibrium. This completes the proof of Nash's theorem.
+
 \end{homeworkProblem}
