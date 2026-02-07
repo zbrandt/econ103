@@ -1,37 +1,251 @@
 \begin{homeworkProblem}
-    This is a question about grading and course design. There are $N$ students in a course. Assume for simplicity that an instructor can give each student one of two grades, $A$ or $B$.
+    This is a question about grading and course design. There are $N$ students 
+    in a course. Assume for simplicity that an instructor can give each student 
+    one of two grades, $A$ or $B$.
     
-    Say that the class is \emph{curved} if there is a number $x \in \{1, 2, \ldots, N\}$ such that the instructor must give $A$'s to $x$ students, and $B$'s to the remaining $N - x$ students.
+    Say that the class is \emph{curved} if there is a number $x \in \{1, 2, 
+    \ldots, N\}$ such that the instructor must give $A$'s to $x$ students, and 
+    $B$'s to the remaining $N - x$ students.
     
     \begin{itemize}
-        \item[(a)] Suppose the grade in the class is based on homework and exams. To be precise there is a weight $\alpha \in (0, 1)$ such the score of student $i$, denoted by $s_i$, is given by
+        \item[(a)] Suppose the grade in the class is based on homework and 
+            exams. To be precise there is a weight $\alpha \in (0, 1)$ such the 
+            score of student $i$, denoted by $s_i$, is given by
             \[
                 s_i = \alpha h_i + (1 - \alpha)e_i,
             \]
-            where $h_i$ is student $i$'s homework score, and $e_i$ is their exam score. If the class is curved, the $x$ students with the highest grade get $A$'s, and the rest get $B$'s (throughout the question you can assume that there are no ties). Fixing the exam scores, suppose the instructor grades homework more leniently. This means that for some $\delta > 1$, each student's grade goes from $h_i$ to $\delta h_i$. What can you say about how the old scores compare to the new scores? What about the new grades? Which students benefit and which are hurt? Be as precise as you can, and prove your answer.
+            where $h_i$ is student $i$'s homework score, and $e_i$ is their 
+            exam score. If the class is curved, the $x$ students with the 
+            highest grade get $A$'s, and the rest get $B$'s (throughout the 
+            question you can assume that there are no ties). Fixing the exam 
+            scores, suppose the instructor grades homework more leniently. This 
+            means that for some $\delta > 1$, each student's grade goes from 
+            $h_i$ to $\delta h_i$. What can you say about how the old scores 
+            compare to the new scores? What about the new grades? Which 
+            students benefit and which are hurt? Be as precise as you can, and 
+            prove your answer.
     \end{itemize}
     
-    Now, assume instead that each student's score in the course is determined by the amount of time they have to study for the course, $t_i$, and difficulty of the course, $d$, so $s_i = s(t_i, d)$ for some function $s : \mathbb{R}^2_+ \to \mathbb{R}_+$ which is increasing in its first argument (time) and decreasing in the second argument (difficulty).\footnote{$\mathbb{R}_+$ denotes the non-negative real numbers.}
+    Now, assume instead that each student's score in the course is determined 
+    by the amount of time they have to study for the course, $t_i$, and 
+    difficulty of the course, $d$, so $s_i = s(t_i, d)$ for some function $s : 
+    \mathbb{R}^2_+ \to \mathbb{R}_+$ which is increasing in its first argument 
+    (time) and decreasing in the second argument (difficulty).
+    \footnote{$\mathbb{R}_+$ denotes the non-negative real numbers.}
     
-    Students like getting $A$'s more than $B$'s, but they also like a class that is not too easy, nor too hard (if the class is to easy you don't learn anything new, and if it's too hard you don't understand anything). We can represent student $i$'s preferences over difficulty levels and grades by a utility function
+    Students like getting $A$'s more than $B$'s, but they also like a class 
+    that is not too easy, nor too hard (if the class is to easy you don't learn 
+    anything new, and if it's too hard you don't understand anything). We can 
+    represent student $i$'s preferences over difficulty levels and grades by a 
+    utility function
     \[
         U_i(G, d) = u(G) - (d - d_i)^2
     \]
-    which describes their payoff from getting grade $G \in \{A, B\}$ when the class has difficulty level $d \in \mathbb{R}_+$. The parameter $d_i$ represents the ideal difficulty level for student $i$, if they had no concern about grades (make sure you understand why this is the case).
+    which describes their payoff from getting grade $G \in \{A, B\}$ when the 
+    class has difficulty level $d \in \mathbb{R}_+$. The parameter $d_i$ 
+    represents the ideal difficulty level for student $i$, if they had no 
+    concern about grades (make sure you understand why this is the case).
     
-    The instructor wants to choose the difficulty level efficiently, to maximize the sum of student utilities.
+    The instructor wants to choose the difficulty level efficiently, to 
+    maximize the sum of student utilities.
     
     \begin{itemize}
         \item[(b)] If the class is curved, what is the efficient choice of $d$?
     \end{itemize}
     
-    In reality the instructor does not observe $(t_i, d_i)^N_{i=1}$. Instead, each student privately knows their own $t_i$ and $d_i$. In order to set the level of difficulty for the course the instructor has to run a survey to learn about $\langle d_i \rangle^N_{i=1}$. The instructor is worried about students' incentives to report truthfully.
+    In reality the instructor does not observe $(t_i, d_i)^N_{i=1}$. Instead, 
+    each student privately knows their own $t_i$ and $d_i$. In order to set the 
+    level of difficulty for the course the instructor has to run a survey to 
+    learn about $\langle d_i \rangle^N_{i=1}$. The instructor is worried about 
+    students' incentives to report truthfully.
     
-    Assume that $t_i$ and $d_i$ are fixed for each student, and will remain the same regardless of what difficulty level is chosen.\footnote{In particular, students cannot adjust the time devoted to the course as a function of the course difficulty. This is obviously a simplification of reality. It turns out, however, that it doesn't really affect the conclusions here.} However students can report whatever $t_i, d_i$ they want to the instructor.
+    Assume that $t_i$ and $d_i$ are fixed for each student, and will remain the 
+    same regardless of what difficulty level is chosen.\footnote{In particular,  
+    students cannot adjust the time devoted to the course as a function of the 
+    course difficulty. This is obviously a simplification of reality. It turns 
+    out, however, that it doesn't really affect the conclusions here.} However 
+    students can report whatever $t_i, d_i$ they want to the instructor.
     
     \begin{itemize}
-        \item[(c)] Suppose that the class is not curved. Instead, each student whose score, $s_i$, exceeds some threshold, $a$, gets an $A$, and otherwise they get a $B$. If the instructor wants to implement the efficient choice of $d$, is it a dominant strategy for all students to report truthfully? If not, in which direction would students like to misreport? Prove your answer.
+        \item[(c)] Suppose that the class is curved as in 2(b). If the 
+            instructor wants to implement the efficient choice of $d$, is it a 
+            dominant strategy for all students to report truthfully? If not, in 
+            which direction would students like to misreport? Prove your answer.
         
-        \item[(d)] Now assume, as before, that the class is curved. Assume also that $U_i(G, d) = u(G) - |d - d_i|$. Prove that it is indeed a dominant strategy for students to report truthfully.
+        \item[(d)] Now assume, as before, that the class is curved. Assume also 
+        that $U_i(G, d) = u(G) - |d - d_i|$. Prove that it is indeed a dominant 
+        strategy for students to report truthfully.
     \end{itemize}
+
+    \pagebreak
+    \part
+
+    Suppose the grade in the class is based on homework and exams. To be 
+    precise there is a weight $\alpha \in (0, 1)$ such the score of student 
+    $i$, denoted by $s_i$, is given by
+    \[
+        s_i = \alpha h_i + (1 - \alpha)e_i,
+    \]
+    where $h_i$ is student $i$'s homework score, and $e_i$ is their exam score. 
+    If the class is curved, the $x$ students with the highest grade get $A$'s, 
+    and the rest get $B$'s (throughout the question you can assume that there 
+    are no ties). Fixing the exam scores, suppose the instructor grades 
+    homework more leniently. This means that for some $\delta > 1$, each 
+    student's grade goes from $h_i$ to $\delta h_i$. What can you say about how 
+    the old scores compare to the new scores? What about the new grades? Which 
+    students benefit and which are hurt? Be as precise as you can, and prove 
+    your answer.
+
+    \solution \\
+    All students' scores increase. Specifically, the new score is
+    
+    \[
+        s_i' = \alpha(\delta h_i) + (1 - \alpha)e_i = \alpha h_i + (1-\alpha)e_i 
+        + \alpha(\delta - 1)h_i = s_i + \alpha(\delta - 1)h_i > s_i
+    \]
+    
+    The increase in score is $\alpha(\delta - 1)h_i$, which is proportional to 
+    the homework score. Consider two students $i$ and $j$, their pairwise
+    difference is
+
+    \[
+        s_i' - s_j' = (s_i - s_j) + \alpha (\delta - 1) (h_i - h_j)
+    \]
+
+    If $h_i \geq h_j$, then $\alpha (\delta - 1)(h_i - h_j) \geq 0$, so $s_i' -
+    s_j' \geq s_i - s_j$. Increasing the weight on homework increases the 
+    advantage of the student with the higher homework score. Any pair whose
+    homework and exam order agree, e.g., $h_i \geq h_j$ and $e_i \geq e_j$,
+    keeps the same ordering after the homework weight change. If $s_i > s_j$
+    and $h_i \geq h_j$, then $s_i' > s_j'$. Therefore, only those pairs of 
+    students for which homework and exam rankings point in opposing directions 
+    can change their relative ordering. The set of top-$x$ students can change
+    only by substituing students who are relatively strong on homework for
+    students who are relatively weak on homework. Students with relatively
+    large homework scores, relative to other students with wimilar exam scores,
+    gain relative and are more likely to move into the top $x$. Students with 
+    relatively small homework scores lose relative rank. 
+
+    \pagebreak
+
+    \part
+
+    If the class is curved, what is the efficient choice of $d$?
+
+    \solution \\
+    The instructor maximizes the sum of utilities:
+    \[
+        \max_d \sum_{i=1}^N U_i(G_i, d) = \max_d \sum_{i=1}^N \left[u(G_i) - 
+        (d - d_i)^2\right]
+    \]
+
+    Since the class is curved, exactly $x$ students receive grade $A$ and $N-x$ 
+    students receive grade $B$, determined by their ranking based on 
+    $s(t_i, d)$. For any given $d$, the grades $\{G_i\}_{i=1}^N$ are 
+    determined, so we can focus on minimizing the difficulty cost:
+    \[
+        \min_d \sum_{i=1}^N (d - d_i)^2
+    \]
+
+    Taking the first-order condition:
+    \[
+        \frac{\partial}{\partial d}\sum_{i=1}^N (d - d_i)^2 = 2\sum_{i=1}^N 
+        (d - d_i) = 0
+    \]
+
+    Solving for $d$:
+    \[
+        Nd = \sum_{i=1}^N d_i \implies d^* = \frac{1}{N}\sum_{i=1}^N d_i
+    \]
+
+    The second-order condition is $2N > 0$, confirming this is a minimum. The 
+    efficient difficulty level is the arithmetic mean of all students' ideal 
+    difficulty levels: $d^* = \bar{d} = \frac{1}{N} \sum_{i=1}^N d_i$.
+
+    \pagebreak
+
+    \part
+
+    Suppose that the class is curved as in 2(b). If the instructor wants to 
+    implement the efficient choice of $d$, is it a dominant strategy for all 
+    students to report truthfully? If not, in which direction would students 
+    like to misreport? Prove your answer.
+
+    \solution \\
+    The instructor, lacking direct observation of students' $d_i$'s, uses the 
+    reported $\hat{d}_1, \dots, \hat{d}_N$ and sets
+
+    \[
+        \hat{d} = \frac{1}{N} \sum_{i=1}^{N} \hat{d}_i
+    \]
+
+    Student $i$'s utility is
+    
+    \[
+        U_i(G_i, \hat{d}) = u(G_i) - (\hat{d} - d_i)^2 = u(G_i) - \left( \frac{\hat{d}_i + 
+        \sum_{j \neq i} \hat{d}_j} {N} - d_i \right)^2
+    \]
+
+    Minimizing $\left( \frac{\hat{d}_i + \sum_{j \neq i} \hat{d}_j} {N} - d_i 
+    \right)^2$ with respect to $\hat{d}_i$ gives the best response for student
+    $i$ to report to the instructor
+
+    \[
+        \hat{d}_i^{\text{BR}} = N d_i - \sum_{j \neq i} \hat{d}_j
+    \]
+
+    Therefore, truthfully reporting $\hat{d}_i = d_i$ is generally not the best
+    response and not a dominant strategy. A student can move the chosen $d$ 
+    closer to their ideal by misreporting their preferences. If the average of
+    the other students' reports is below $d_i$, student $i$ will report a value
+    larger than $d_i$, to raise $\hat{d}$, and vice versa. 
+
+
+    \pagebreak
+
+    \part
+
+    Now assume, as before, that the class is curved. Assume also that 
+    $U_i(G, d) = u(G) - |d - d_i|$. Prove that it is indeed a dominant 
+    strategy for students to report truthfully.
+
+    \solution \\
+    If $U_i(G, d)$ now equals $u(G) - |d - d_i|$, then the $d$ that maximizes 
+    the social objective is the median of the reported $\hat{d}_i$. I'll show
+    that it is a dominant strategy for students to report truthfully in this 
+    case.
+
+    For a student $i$, the reports of all other students are $\hat{d}_{-i}$
+
+    \[
+        \hat{d}_{-i} = \{ \hat{d}_1, \dots \hat{d}_{i - 1}, \hat{d}_{i + 1}, \dots, \hat{d}_N \}
+    \]
+
+    Student $i$'s optimization problem is to find the right $\hat{d}_i$ to
+    report to maximize their utility. Since the instructor chooses the median
+    of the reported difficulties, the student $i$ needs to choose $\hat{d}_i$
+    such that the median is as close as possible to their preferred difficulty
+    $d_i$. There are three cases to consider:
+
+    \begin{enumerate}
+        \item The median of $\hat{d}_{-i}$ is less than $d_i$: in this case, 
+            reporting truthfully weakly dominates since, unlike in the 
+            previous part, scaling the magnitude higher in an attempt to move
+            the median to student $i$'s advantage will have no greater effect 
+            than reporting $d_i$ since the median is resistant to extreme 
+            outliers. 
+        \item The median of $\hat{d}_{-i}$ is equal to $d_i$: in this case,
+            there is no benefit to not reporting truthfully, since reporting
+            $d_i$ will cement this value as the median and optimize student 
+            $i$'s utility.
+        \item the median of $\hat{d}_{-i}$ is greater than $d_i$: this case is
+            similar to the first one, except in the opposite direction. Again, 
+            reporting truthfully weakly dominates since scaling the magnitude
+            of $\hat{d}_i$ lower will have no greater effect than reporting 
+            $d_i$ since the median is resistant to extreme outliers. 
+    \end{enumerate}
+
+    So, reporting truthfully is indeed the dominant strategy with this
+    configuration. 
+
 \end{homeworkProblem}
